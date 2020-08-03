@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'SecondRoute.dart';
+import 'thirdpage.dart';
+
 void main() {
   runApp(MyHome());
 }
@@ -20,16 +22,32 @@ class FirstPage extends StatelessWidget {
         appBar: AppBar(
           title: Text('First Route'),
         ),
-        body: Center(
-          child: RaisedButton(
-            child: Text('Open route'),
-            onPressed: () {
-             Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => SecondRoute()),
-              );
-            },
-          ),
+        body: Stack(
+          
+            children: <Widget>[
+              Container(
+                alignment: Alignment(0.8, 0.9),
+                child: new RaisedButton(
+                child: Text('Open second'),
+                onPressed: () {
+                 Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondRoute()),
+                  );
+                },
+            ),
+              ),
+            new RaisedButton(
+              child: Text('Open third'),
+              onPressed: () {
+               Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ThirdRoute()),
+                );
+              },
+            ),
+            ],
+          
         ),
         drawer: Drawer(
           child: ListView(
@@ -46,11 +64,16 @@ class FirstPage extends StatelessWidget {
               ),
               ListTile(
                 title: Text('First Item'),
-                onTap: (){}
+                onTap: (){
+                  }
               ),
               ListTile(
                 title: Text('Second Item'),
-                onTap: (){}
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SecondRoute()),
+                  );}
               ),
               ListTile(
                 title: Text('Third Item'),
